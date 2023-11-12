@@ -1,6 +1,10 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:e_commerce_app_ui/widget/BestSellingItemWidget.dart';
 import 'package:e_commerce_app_ui/widget/CategoryWidget.dart';
 import 'package:e_commerce_app_ui/widget/home_app_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,18 +12,19 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      body: Column(
         children: [
-          HomeAppBar(),
-          Container(
-            height: 500,
+          SafeArea(child: HomeAppBar()),
+        Expanded(child:SingleChildScrollView(
+          child: Container(
+            // height: 500,
             padding: EdgeInsets.only(top: 15),
             decoration: BoxDecoration(
-              color: Color(0xFFEDECF2),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(35),
-                topRight: Radius.circular(35)
-              )
+                color: Color(0xFFEDECF2),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(35),
+                    topRight: Radius.circular(35)
+                )
             ),
             child: Column(
               children: [
@@ -39,8 +44,8 @@ class HomePage extends StatelessWidget {
                         width: 300,
                         child: TextFormField(
                           decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Search here..."
+                              border: InputBorder.none,
+                              hintText: "Search here..."
                           ),
                         ),
                       ),
@@ -53,11 +58,12 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
+
                 Container(
                   alignment: Alignment.centerLeft,
                   margin: EdgeInsets.symmetric(
-                    vertical: 20,
-                    horizontal: 10
+                      vertical: 20,
+                      horizontal: 10
                   ),
                   child: Text(
                     "Categories",
@@ -68,12 +74,30 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
+                // Category Widget
                 CategoryWidget(),
+
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                  child: Text(
+                    "Best Selling",
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF4C53A5),
+                    ),
+                  ),
+                ),
+                //   Item Widget
+                BestSellingItemWidget(),
               ],
             ),
-          )
+          ),
+        ))
         ],
       ),
+
     );
   }
 }

@@ -1,4 +1,7 @@
+import 'package:e_commerce_app_ui/pages/ItemPage.dart';
+import 'package:e_commerce_app_ui/pages/cart_page.dart';
 import 'package:e_commerce_app_ui/pages/home_page.dart';
+import 'package:e_commerce_app_ui/pages/main_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +20,9 @@ class MyApp extends StatelessWidget {
        scaffoldBackgroundColor: Colors.white
       ),
       routes: {
-        "/": (context) => HomePage()
+        "/": (context) => MainScreen(),
+        "cartPage" : (context) => CartPage(),
+        "itemPage" : (context) => ItemPage(),
       }
     );
   }
